@@ -62,6 +62,18 @@ form.addEventListener('submit', e => {
   }
 
   // Placeholder success message
+  const whatsappNumber = "917800296082";
+
+const text =
+    "Hello Akash,%0A%0A" +
+    "Name: " + encodeURIComponent(name.value) + "%0A" +
+    "Email: " + encodeURIComponent(email.value) + "%0A" +
+    "Message: " + encodeURIComponent(message.value);
+
+window.open(
+    "https://wa.me/" + whatsappNumber + "?text=" + text,
+    "_blank"
+);
   alert('Thank you for your message, Akash will get back to you soon!');
   form.reset();
 });
