@@ -77,3 +77,55 @@ window.open(
   alert('Thank you for your message, Akash will get back to you soon!');
   form.reset();
 });
+
+// Chatbot
+const chatbotToggle = document.getElementById("chatbot-toggle");
+const chatbotBox = document.getElementById("chatbot-box");
+const chatbotClose = document.getElementById("chatbot-close");
+const chatbotMessages = document.getElementById("chatbot-messages");
+const chatbotOptions = document.querySelectorAll(".chatbot-options button");
+if (chatbotToggle && chatbotBox) {
+    chatbotToggle.addEventListener("click", function () {
+        chatbotBox.style.display =
+            chatbotBox.style.display === "block" ? "none" : "block";
+    });
+}
+
+if (chatbotClose) {
+    chatbotClose.addEventListener("click", function () {
+        chatbotBox.style.display = "none";
+    });
+}
+
+chatbotOptions.forEach(function (button) {
+    button.addEventListener("click", function () {
+        const question = button.textContent;
+
+        let answer = "";
+
+        if (question.includes("services")) {
+            answer = "I offer modern websites, responsive web design, UI/UX design and website development.";
+        } 
+        else if (question.includes("projects")) {
+            answer = "You can view my projects in the Projects section of this website.";
+        } 
+        else if (question.includes("hire")) {
+            answer = "You can hire Akash by using the Hire Me button or contacting him through WhatsApp.";
+        } 
+        else if (question.includes("Contact")) {
+            answer = "You can contact Akash through the Contact section or WhatsApp.";
+        }
+
+        const userMessage = document.createElement("p");
+userMessage.innerHTML = "<strong>You:</strong> " + question;
+
+const assistantMessage = document.createElement("p");
+assistantMessage.innerHTML = "<strong>Akash Assistant:</strong> " + answer;
+
+chatbotMessages.appendChild(userMessage);
+chatbotMessages.appendChild(assistantMessage);
+chatbotMessages.innerHTML +=
+    "<p><strong>You:</strong> " + question + "</p>" +
+    "<p><strong>Akash Assistant:</strong> " + answer + "</p>";
+    });
+  });
